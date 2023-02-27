@@ -31,3 +31,26 @@ class Movie(models.Model):
         on_delete=models.CASCADE,
         related_name="movie",
     )
+    movies = models.ManyToManyField(
+        "users.Account",
+        through="movies.MovieOrder",
+        related_name="movies_orders"
+    )
+
+
+class MovieOrder(models.Model):
+    user = models.ForeignKey(
+        "users.Account",
+        on_delete=models.CASCADE,
+        related_name="movie_order",
+    )
+    movie = models.ForeignKey(
+        "movies.Movie",
+        on_delete=models.CASCADE,
+        related_name="movie_order",
+    )
+    buyed_at = models.DateTimeField(auto_now_add=True)
+    price = models.DecimalField(
+        max_digits=8, 
+        decimal_places=2,
+    )
