@@ -19,9 +19,9 @@ class AccountSerializer(serializers.Serializer):
         max_length=100,
         validators=[
             UniqueValidator(
-                Account.objects.all(),
+                queryset=Account.objects.all(),
                 message={"username": "username already taken."},
-            )
+            ),
         ],
     )
     email = serializers.EmailField(

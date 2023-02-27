@@ -19,7 +19,7 @@ class AccountView(APIView):
         try:
             if data["is_employee"]:
                 data["is_superuser"] = True
-        except:
+        except KeyError:
             data["is_employee"] = False
 
         serializer = AccountSerializer(data=data)
