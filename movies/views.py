@@ -5,7 +5,6 @@ from .serializers import MovieSerializer, MovieOrderSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .permissions import IsEmployee
 from django.shortcuts import get_object_or_404
-from users.models import Account
 
 
 class MovieView(APIView):
